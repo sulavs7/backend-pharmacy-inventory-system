@@ -72,18 +72,14 @@ const getBatchByMedicine = async (req, res, next) => {
         }
         //find Batch wiht this medicineId
         const batches = await Batch.find({ medicine: medicineId })
-            .populate('medicine', 'name type')
+            .populate('medicine', 'medicineName genericName dosageForm');
 
         res.status(200).json({
             success: true,
             count: batches.length,
             data: batches,
-            message:"succesful to getBatchByMedicine"
-        });
-
-
-
-
+            message: "succesful to getBatchByMedicine"
+        })
     }
     catch (err) {
         next(err)
