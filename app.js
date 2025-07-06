@@ -7,6 +7,7 @@ const connectDB = require("./config/db")
 const authRoutes = require("./routes/authRoutes")
 const userRoutes = require("./routes/userRoutes")
 const medicineRoutes = require("./routes/medicineRoutes")
+const batchRoutes = require('./routes/batchRoutes')
 
 const app = express()
 
@@ -20,8 +21,9 @@ app.get('/helo', (req, res, next) => {
     res.send("welcome to PharmaTrack")
 })
 app.use('/api/auth', authRoutes);
-app.use('/api/users',userRoutes)
-app.use('/api/medicine',medicineRoutes)
+app.use('/api/users', userRoutes)
+app.use('/api/medicine', medicineRoutes)
+app.use('/api/batches', batchRoutes)
 
 
 //handling errors which is not handled by above routes

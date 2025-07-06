@@ -50,8 +50,8 @@ GET http://localhost:5000/api/medicine
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTcxMzE2MywiZXhwIjoxNzUxNzE2NzYzfQ.3iYzvYKi9us1LyqnqHzwZTxWBTCgc8uVBkh-vtECneE
 
 ### add the medicine 
-POST http://localhost:5000/api/medicine
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTcyMDIyNSwiZXhwIjoxNzUxNzIzODI1fQ.EdIezVuaGg33kBWkXNmk1ISqNKGOron3iLCcavIrSNQ 
+POST http://localhost:5000/api/batches
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTgwODI1NSwiZXhwIjoxNzUxODExODU1fQ.qLYvjEzT_KriPMDhHsheumcmopBGYbJj_l-Pvufgt4s 
 Content-Type: application/json
 
 {
@@ -83,3 +83,18 @@ DELETE  http://localhost:5000/api/medicine/6869217851053b07c9768c67
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTcyMDExMiwiZXhwIjoxNzUxNzIzNzEyfQ.uJGWCdCo8unuK7LYrYLTTAzsr-EigxPmsA66oVg1f18
 
 
+
+
+
+###batch Routes 
+POST http://localhost:5000/api/batches
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTgwODI1NSwiZXhwIjoxNzUxODExODU1fQ.qLYvjEzT_KriPMDhHsheumcmopBGYbJj_l-Pvufgt4s 
+Content-Type: application/json
+
+{
+  "medicine": "6869219d51053b07c9768c6b",
+  "batchNumber": "BATCH-2307",
+  "expiryDate": "2025-07-31",
+  "quantity": 100,
+  "createdBy": "686881e8bf73059493e25141"
+}
