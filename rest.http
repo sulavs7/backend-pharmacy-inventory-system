@@ -98,3 +98,7 @@ Content-Type: application/json
   "quantity": 100,
   "createdBy": "686881e8bf73059493e25141"
 }
+
+### getBatchByMedicine
+GET http://localhost:5000/api/batches/6869219d51053b07c9768c6b
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTgxMjQzMiwiZXhwIjoxNzUxODE2MDMyfQ.ypGuppiGydbG82LUgvgDTFpuK8RtWXVF6O2sCfPYjyE 

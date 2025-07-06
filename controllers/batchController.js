@@ -63,7 +63,32 @@ const addBatch = async (req, res, next) => {
 
 }
 const getBatchByMedicine = async (req, res, next) => {
-    res.send("this is getBatchByMedicine Route")
+    try {
+        const { medicineId } = req.params
+
+        // Validate medicineId
+        if (!mongoose.Types.ObjectId.isValid(medicineId)) {
+            throw createError.BadRequest("Invalid medicine ID")
+        }
+        //find Batch wiht this medicineId
+        const batches = await Batch.find({ medicine: medicineId })
+            .populate('medicine', 'name type')
+
+        res.status(200).json({
+            success: true,
+            count: batches.length,
+            data: batches,
+            message:"succesful to getBatchByMedicine"
+        });
+
+
+
+
+    }
+    catch (err) {
+        next(err)
+    }
+
 }
 const getExpiringBatches = async (req, res, next) => {
     res.send("this is getExpiringBatches Route")
