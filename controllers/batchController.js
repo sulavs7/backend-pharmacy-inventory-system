@@ -5,16 +5,27 @@ const mongoose = require('mongoose')
 
 const addBatch = async (req, res, next) => {
     try {
-        const { medicine, batchNumber, expiryDate, quantity, createdBy } = req.body
+        const { medicine, batchNumber, expiryDate, quantity } = req.body
 
         //validating required fields
-        if (!medicine || !batchNumber || !expiryDate || !quantity || !createdBy) {
+        if (!medicine || !batchNumber || !expiryDate || !quantity) {
             throw createError.BadRequest("Some fields are missing")
         }
 
         //validating quantity
         if (quantity <= 0) {
             throw createError.NotAcceptable("quantity cannot be negative")
+
+        }
+
+        // Check if expiryDate is a valid date string
+        if (isNaN(Date.parse(expiryDate))) {
+            throw createError.BadRequest("Invalid expiry date");
+        }
+
+        // Check if expiryDate is not in the past
+        if (new Date(expiryDate) < new Date()) {
+            throw createError.BadRequest("Expiry date cannot be in the past");
         }
 
         //validating if objectId is proper 
@@ -34,10 +45,9 @@ const addBatch = async (req, res, next) => {
             batchNumber,
             expiryDate,
             quantity,
-            createdBy: req.user._id //got from jwt
+            createdBy: req.user.id //got from jwt
 
         })
-        console.log(req.user?._id)
         const savedBatch = await newBatch.save()
 
         res.status(201).json({
