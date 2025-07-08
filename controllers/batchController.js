@@ -2,6 +2,7 @@ const createError = require("http-errors")
 const Medicine = require('../models/medicines')
 const Batch = require("../models/batch")
 const mongoose = require('mongoose')
+const { $gte, $lte } = require("sift")
 
 const addBatch = async (req, res, next) => {
     try {
@@ -87,9 +88,35 @@ const getBatchByMedicine = async (req, res, next) => {
 
 }
 const getExpiringBatches = async (req, res, next) => {
-    res.send("this is getExpiringBatches Route")
+    try {
+        //Converts the string value from the query parameter to an integer number. For example, "10" becomes 10. req.query.days is obtained from url 
+        const days = parseInt(req.query.days) || 7;
+
+        const todayDate = new Date();
+        const futureDate = new Date();
+        //getDate will only show the day ie getDate(2060-03-17) will output 17 . But futuredate.setDate(15) will set the date to 15th of the month 
+
+        futureDate.setDate(todayDate.getDate() + days)
+
+        //finding batch between the expiry period 
+        const expiringBatches = await Batch.find({
+            expiryDate: { $gte: todayDate, $lte: futureDate },//$gte means greater than or equal to today 
+            quantity: { $gt: 0 } //only qty>0 is considered
+        }).populate("medicine", "medicineName genericName")
+
+        res.status(200).json({
+            success: true,
+            data: expiringBatches,
+            message: `Batches expiring within ${days} day(s)`
+        });
+
+    }
+    catch (err) {
+        next(err)
+    }
 }
 const updateBatch = async (req, res, next) => {
+
     res.send("this is updateBatch Route")
 }
 const deleteBatch = async (req, res, next) => {

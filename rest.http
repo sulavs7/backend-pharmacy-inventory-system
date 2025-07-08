@@ -50,23 +50,24 @@ GET http://localhost:5000/api/medicine
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTcxMzE2MywiZXhwIjoxNzUxNzE2NzYzfQ.3iYzvYKi9us1LyqnqHzwZTxWBTCgc8uVBkh-vtECneE
 
 ### add the medicine 
-POST http://localhost:5000/api/batches
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTgwODI1NSwiZXhwIjoxNzUxODExODU1fQ.qLYvjEzT_KriPMDhHsheumcmopBGYbJj_l-Pvufgt4s 
+POST http://localhost:5000/api/medicine
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTk3Mzk5NSwiZXhwIjoxNzUxOTc3NTk1fQ.bW9cmGySfZp9fUwhdRoi4kJFrv1OwoQN63tyFwBA1dY
 Content-Type: application/json
 
 {
-  "medicineName": "Pantop",
-  "genericName": "panzol",
-  "manufacturer": "Nepal Pharma Ltd.",
-  "dosageForm": "syrup",
-  "qrCode": "QR1234567890ABCDEFhd",
-  "minThreshold": 50
+  "medicineName": "TestMed ExpireSoon",
+  "genericName": "TestGen",
+  "manufacturer": "TestPharma",
+  "dosageForm": "tablet",
+  "qrCode": "TEST-EXP",
+  "minThreshold": 20
 }
 
 
+
 ### get medicine by id 
-GET http://localhost:5000/api/medicine/6868d64d203f18ad471af30b
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTcxMzE2MywiZXhwIjoxNzUxNzE2NzYzfQ.3iYzvYKi9us1LyqnqHzwZTxWBTCgc8uVBkh-vtECneE
+GET http://localhost:5000/api/medicine/686d0130c305dc5df330526f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTk3Mzk5NSwiZXhwIjoxNzUxOTc3NTk1fQ.bW9cmGySfZp9fUwhdRoi4kJFrv1OwoQN63tyFwBA1dY
 
 
 ### update medicine
@@ -88,17 +89,24 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4Y
 
 ###batch Routes 
 POST http://localhost:5000/api/batches
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTgxMjQzMiwiZXhwIjoxNzUxODE2MDMyfQ.ypGuppiGydbG82LUgvgDTFpuK8RtWXVF6O2sCfPYjyE 
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTk3Mzk5NSwiZXhwIjoxNzUxOTc3NTk1fQ.bW9cmGySfZp9fUwhdRoi4kJFrv1OwoQN63tyFwBA1dY
 Content-Type: application/json
 
 {
-  "medicine": "6869219d51053b07c9768c6b",
-  "batchNumber": "BATCH-2307",
-  "expiryDate": "2025-07-31",
-  "quantity": 100,
-  "createdBy": "686881e8bf73059493e25141"
+  "medicine": "686d0130c305dc5df330526f",  
+  "batchNumber": "EXP-14",
+  "expiryDate": "2025-07-22",  
+  "quantity": 50
 }
 
+
 ### getBatchByMedicine
-GET http://localhost:5000/api/batches/6869219d51053b07c9768c6b
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTgxNjYwMCwiZXhwIjoxNzUxODIwMjAwfQ.vcDQaZaX2HE9tDh-wDxw8kJSDzzFG-KRngbm6Yy8sPQ
+GET http://localhost:5000/api/batches/medicine/686d0130c305dc5df330526f
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTk3Mzk5NSwiZXhwIjoxNzUxOTc3NTk1fQ.bW9cmGySfZp9fUwhdRoi4kJFrv1OwoQN63tyFwBA1dY
+
+
+###get Expiring batches 
+GET http://localhost:5000/api/batches/expiring-soon?days=14
+authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTk3NjA3MSwiZXhwIjoxNzUxOTc5NjcxfQ.NNGL3X8xuYTuZ6dzkGYFSt0DBLfQ-X1ppz1NmENE6Vg
+
+###update batch 
