@@ -116,8 +116,39 @@ const getExpiringBatches = async (req, res, next) => {
     }
 }
 const updateBatch = async (req, res, next) => {
+    try {
+        const id = req.params.batchId
+        if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+            throw createError.BadRequest("Invalid Batch id ")
+        }
+        console.log(id)
+        const updates = req.body
 
-    res.send("this is updateBatch Route")
+        const allowedFields = ["batchNumber", "expiryDate", "quantity"]
+        const selfUpdates = {}
+
+        allowedFields.forEach(field => {
+            if (field in updates) {
+                selfUpdates[field] = updates[field]
+            }
+        })
+        if (Object.keys(selfUpdates).length === 0) {
+            throw createError.BadRequest("no valid field provided for updates")
+        }
+        const updateBatch = await Batch.findByIdAndUpdate(id, selfUpdates, { new: true })
+        if (!updateBatch) {
+            throw createError.NotFound("Batch not found")
+        }
+        res.status(200).json({
+            success: true,
+            data: updateBatch,
+            message: "Medicine updated successfully"
+        })
+
+    }
+    catch (err) {
+        next(err)
+    }
 }
 const deleteBatch = async (req, res, next) => {
     res.send("this is deleteBatch Route")

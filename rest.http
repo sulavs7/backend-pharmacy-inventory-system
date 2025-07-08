@@ -110,3 +110,11 @@ GET http://localhost:5000/api/batches/expiring-soon?days=14
 authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTk3NjA3MSwiZXhwIjoxNzUxOTc5NjcxfQ.NNGL3X8xuYTuZ6dzkGYFSt0DBLfQ-X1ppz1NmENE6Vg
 
 ###update batch 
+PATCH http://localhost:5000/api/batches/686d0233c305dc5df3305272
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTk3NjA3MSwiZXhwIjoxNzUxOTc5NjcxfQ.NNGL3X8xuYTuZ6dzkGYFSt0DBLfQ-X1ppz1NmENE6Vg
+Content-Type: application/json
+
+{
+  "expiryDate": "2025-07-25T00:00:00.000Z",
+  "quantity": 100
+}
