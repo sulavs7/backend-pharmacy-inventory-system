@@ -87,27 +87,27 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4Y
 
 
 
-###batch Routes 
+###add batch  
 POST http://localhost:5000/api/batches
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTk3Mzk5NSwiZXhwIjoxNzUxOTc3NTk1fQ.bW9cmGySfZp9fUwhdRoi4kJFrv1OwoQN63tyFwBA1dY
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjA1MTA1OSwiZXhwIjoxNzUyMDU0NjU5fQ.BXtOVrShqpRMnP2iRdNKc1a0VqjrAL5mlzG-Wu3qTUM
 Content-Type: application/json
 
 {
-  "medicine": "686d0130c305dc5df330526f",  
-  "batchNumber": "EXP-14",
-  "expiryDate": "2025-07-22",  
+  "medicine": "6869219d51053b07c9768c6b",  
+  "batchNumber": "Batch-2308",
+  "expiryDate": "2025-07-25",  
   "quantity": 50
 }
 
 
 ### getBatchByMedicine
-GET http://localhost:5000/api/batches/medicine/686d0130c305dc5df330526f
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTk3Mzk5NSwiZXhwIjoxNzUxOTc3NTk1fQ.bW9cmGySfZp9fUwhdRoi4kJFrv1OwoQN63tyFwBA1dY
+GET http://localhost:5000/api/batches/medicine/6869219d51053b07c9768c6b
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjA1MTA1OSwiZXhwIjoxNzUyMDU0NjU5fQ.BXtOVrShqpRMnP2iRdNKc1a0VqjrAL5mlzG-Wu3qTUM
 
 
 ###get Expiring batches 
 GET http://localhost:5000/api/batches/expiring-soon?days=14
-authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTk3NjA3MSwiZXhwIjoxNzUxOTc5NjcxfQ.NNGL3X8xuYTuZ6dzkGYFSt0DBLfQ-X1ppz1NmENE6Vg
+authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjA1MTA1OSwiZXhwIjoxNzUyMDU0NjU5fQ.BXtOVrShqpRMnP2iRdNKc1a0VqjrAL5mlzG-Wu3qTUM
 
 ###update batch 
 PATCH http://localhost:5000/api/batches/686d0233c305dc5df3305272
@@ -117,4 +117,20 @@ Content-Type: application/json
 {
   "expiryDate": "2025-07-25T00:00:00.000Z",
   "quantity": 100
+}
+
+###delete batch
+DELETE http://localhost:5000/api/batches/686d0233c305dc5df3305272
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTk3NjA3MSwiZXhwIjoxNzUxOTc5NjcxfQ.NNGL3X8xuYTuZ6dzkGYFSt0DBLfQ-X1ppz1NmENE6Vg
+
+
+
+###sales 
+POST http://localhost:5000/api/sales
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Njg4MWU4YmY3MzA1OTQ5M2UyNTE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MjA1MTA1OSwiZXhwIjoxNzUyMDU0NjU5fQ.BXtOVrShqpRMnP2iRdNKc1a0VqjrAL5mlzG-Wu3qTUM
+Content-Type: application/json
+
+{
+  "qrCode": "QR1234567890ABCDEFhd",  
+  "quantity": 20
 }

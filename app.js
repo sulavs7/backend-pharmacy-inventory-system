@@ -8,6 +8,7 @@ const authRoutes = require("./routes/authRoutes")
 const userRoutes = require("./routes/userRoutes")
 const medicineRoutes = require("./routes/medicineRoutes")
 const batchRoutes = require('./routes/batchRoutes')
+const salesRoutes = require('./routes/salesRoutes')
 
 const app = express()
 
@@ -24,6 +25,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes)
 app.use('/api/medicine', medicineRoutes)
 app.use('/api/batches', batchRoutes)
+app.use('/api/sales', salesRoutes)
 
 
 //handling errors which is not handled by above routes

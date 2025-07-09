@@ -151,7 +151,22 @@ const updateBatch = async (req, res, next) => {
     }
 }
 const deleteBatch = async (req, res, next) => {
-    res.send("this is deleteBatch Route")
+    try {
+        const id = req.params.batchId
+        if (!id.match(/^[0-9a-fA-F]{24}$/))
+            throw createError.BadRequest("Invalid medicine Id")
+        const deleteBatch = await Batch.findByIdAndDelete(id)
+        if (!deleteBatch) {
+            throw createError.NotFound("Batch not found");
+        }
+        res.status(200).json({
+            success: true,
+            data: deleteBatch,
+            message: "Batch deleted successfully",
+        });
+    } catch (err) {
+        next(err)
+    }
 }
 
 module.exports = {
